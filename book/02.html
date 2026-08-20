@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Chapter 2: The Pitcher Plant (How Intelligent People Get Trapped) - The Easy Way to Stop Video Gaming</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Easy Way to Stop Video Gaming</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>2: The Pitcher Plant (How Intelligent People Get Trapped)</p>
+<p>You didn't start playing because you wanted to feel trapped. You started because it was fun.</p>
+<p>That first time you booted up the game, there was no obligation. No daily login bonus ticking away in the back of your mind. No battle pass tier about to expire. No ranked anxiety, no gear score anxiety, no guild obligations—just the wide-open thrill of discovery. A new world to explore. A new mechanic to master. A new adventure with friends.</p>
+<p>The joy was real. That is the first thing you need to understand before we go any further. The joy was never fake. The laughter with your friends on voice chat was genuine. The rush of your first hard-fought win was genuine. The sense of wonder as you explored a beautifully crafted world was genuine.</p>
+<p>And that is exactly what made the trap so effective.</p>
+<p>Because the trap did not begin as pain. It began as nectar.</p>
+<h3 id="the-nectar-at-the-rim"><a class="header" href="#the-nectar-at-the-rim">The Nectar at the Rim</a></h3>
+<p>Let me tell you about the pitcher plant.</p>
+<p>In the wild, there is a family of carnivorous plants known as pitcher plants. They are often strikingly beautiful—vivid colors, elegant shapes, and a sweet, fragrant nectar that coats the rim of a deep, slippery cup. Insects are drawn to the nectar. They land on the rim, drink deeply, and feel satisfied. The nectar is real. The sweetness is real. No deception there.</p>
+<p>But the rim of the pitcher plant is coated with a fine, slick film. The insect does not notice it at first. It drinks, it moves slightly, it drinks again. Each tiny movement carries it a little closer to the edge. The slope is so gradual, so imperceptible, that it feels like standing on solid ground.</p>
+<p>By the time the insect looks up and realizes it can no longer see the sky, the walls are already too slippery to climb.</p>
+<p>Here is the critical thing about the pitcher plant: the insect is not stupid, weak-willed, or morally deficient. It is simply following a natural instinct—the drive to seek nourishment—and that instinct has been exploited by a plant that evolved specifically to exploit it.</p>
+<p>The plant did not need to overpower the insect. It did not need to chase it or trap it with force. It simply needed to make the entrance sweet enough and the slide gradual enough that the insect never felt the moment the trap closed around it.</p>
+<p>Now, let's talk about the video game.</p>
+<p>Do you remember the first time you felt the pull of obligation? Not the joy of playing, but the quiet, anxious tug that said <em>you should log in today or you'll miss something</em>.</p>
+<p>Maybe it was a daily login streak. Maybe it was a limited-time event with exclusive rewards. Maybe it was a battle pass tier that was about to expire, or a weekly quest reset, or a seasonal rank about to decay.</p>
+<p>At first, it didn't feel like manipulation. It felt like opportunity. <em>Oh, I get a bonus for logging in every day? Great. I was going to play anyway.</em> <em>Oh, the battle pass gives me rewards just for playing? Sign me up.</em> <em>Oh, there's a special event this weekend? That sounds fun.</em></p>
+<p>That is the slick film on the rim of the pitcher plant.</p>
+<p>The game did not need to force you to play. It simply needed to make the rewards sweet enough and the obligations gradual enough that you never felt the moment the fun stopped being the point.</p>
+<p>You did not decide to become trapped. You decided to drink the nectar. And the nectar was real.</p>
+<h3 id="the-slope-you-never-noticed"><a class="header" href="#the-slope-you-never-noticed">The Slope You Never Noticed</a></h3>
+<p>Imagine walking through a beautiful garden. The path is smooth, the flowers are fragrant, and the sunlight is warm. You are enjoying yourself. You are not thinking about where the path leads because you are too busy enjoying the walk.</p>
+<p>But what if the path was engineered to slope gradually downward, one tiny degree at a time? You would not notice. Your steps would feel normal. The scenery would still be beautiful. But with every step, you would be descending deeper, and the entrance behind you would grow smaller and smaller.</p>
+<p>At what point would you look up and realize you could no longer see the entrance?</p>
+<p>That is the question at the heart of your gaming history. When did the fun stop being the point?</p>
+<p>You probably cannot pinpoint the exact moment. That is not because you were careless. It is because the slope was designed to be imperceptible.</p>
+<p>The game industry has spent billions of dollars figuring out how to make the slide feel like walking. They have studied your psychology, your neurology, your social instincts, and your deepest fears. They know exactly how to keep you moving down the path without ever triggering the alarm bell that says <em>this is no longer fun</em>.</p>
+<p>They know that if the trap were obvious, you would walk away. So they made the trap invisible.</p>
+<p>The daily login bonus was not presented as a chain. It was presented as a reward. The battle pass was not presented as a part-time job. It was presented as a progression system. The ranked ladder was not presented as an ego trap. It was presented as a test of skill.</p>
+<p>Every step down the slope felt like walking. Every obligation was disguised as opportunity. And you kept walking, not because you were foolish, but because the path was designed to feel like freedom.</p>
+<h3 id="the-two-monsters"><a class="header" href="#the-two-monsters">The Two Monsters</a></h3>
+<p>At this point, you might be thinking something like this: <em>Okay, I understand the trap. But there's more to it than that. I can feel it physically. When I try to stop, I get restless, anxious, pulled toward the screen in a way I can't explain. That's not just a mental illusion. That's a real addiction. My brain is broken.</em></p>
+<p>That belief—that you are facing a massive, overpowering biological monster—is one of the biggest reasons people stay trapped. It feels true, physical, like proof that you are powerless.</p>
+<p>But what if you have been fighting the wrong monster?</p>
+<p>Let me introduce you properly to the two forces that are actually keeping you in the trap. They will be your companions for the rest of this book, and understanding them is the key to everything that follows.</p>
+<p>The first is <strong>the Big Monster</strong>.</p>
+<p>The Big Monster is responsible for 99% of the struggle. But despite its size, its power, its feeling of being an immovable force in your life, the Big Monster is not a physical addiction. It is not a brain disease. It is not a chemical dependency.</p>
+<p>The Big Monster is made entirely of ideas.</p>
+<p><em>It relaxes me.</em>
+<em>It's my social life.</em>
+<em>I've invested too much to walk away.</em>
+<em>It's where I find achievement and mastery.</em>
+<em>It's cheaper than going out.</em>
+<em>It keeps my mind sharp.</em>
+<em>It's part of who I am.</em></p>
+<p>These are the thoughts that keep you logging in. They are not truths. They are beliefs—beliefs that have been carefully planted in your mind by years of cultural messaging, marketing, and personal rationalization.</p>
+<p>The Big Monster is the voice in your head that says <em>just one more match</em>. It is the voice that says <em>you can't relax without the game</em>. It is the voice that says <em>what else would you even do with your time</em>.</p>
+<p>And here is the most important thing you will ever learn about the Big Monster: <strong>every single one of those beliefs is an illusion.</strong></p>
+<p>Not some of them. All of them. Every reason you have ever given yourself for why you need to keep playing is a lie. And over the course of this book, we are going to dismantle each one, piece by piece, until the Big Monster has nothing left to stand on.</p>
+<p>The second is <strong>the Little Monster</strong>.</p>
+<p>The Little Monster is responsible for only 1% of the struggle. It is the tiny physical echo that remains after years of overstimulation—a slight restlessness in your fingers, an idle urge to open the launcher, a phantom itch that says <em>you should be doing something right now</em>.</p>
+<p>When you try to stop playing, the Little Monster is what you feel. The fidgety legs. The twitchy hands. The urge to open Discord or Twitch or scroll through your game library. The inability to sit still in silence.</p>
+<p>But here is the critical truth: <strong>the Little Monster is harmless.</strong></p>
+<p>It is not pain. It is not withdrawal. It is not a monster at all, despite the name. It is simply your nervous system responding predictably to a highly concentrated stimulus—like a fridge humming after the door has been opened too long, or a song stuck in your head that loops and loops but does not actually hurt.</p>
+<p>The Little Monster does not have the power to keep you trapped. It is a tiny, faint echo. The only reason it feels overwhelming is because the Big Monster is screaming in your ear at the same time, telling you that you are missing out, that you are losing something precious, that you will never feel relaxed or social or fulfilled again without the game.</p>
+<p>When the Big Monster is dismantled—when you see clearly that you are not giving anything up—the Little Monster dissolves on its own. It does not need to be fought. It does not need to be starved with willpower. It just quietly fades away.</p>
+<p>That is why this book does not ask you to stop playing. Because stopping is not the first step. Seeing is the first step. And once you see, the stopping becomes effortless.</p>
+<h3 id="the-parasite"><a class="header" href="#the-parasite">The Parasite</a></h3>
+<p>But wait. If the Big Monster is just a set of ideas, and the Little Monster is just a harmless echo, why does it all feel so real? Why does quitting feel like losing a part of yourself?</p>
+<p>Because the Big Monster is not just a collection of random thoughts. It is a parasite—a machine built on top of your natural hunger for play.</p>
+<p>Here is what I mean by that.</p>
+<p>The human drive to play is one of the oldest and most beautiful instincts we have. Play is how children learn, how adults decompress, how friends bond. Play is voluntary, joyful, creative, and life-giving. When you finish a session of genuine play, you feel refreshed, connected, nourished on a deep level.</p>
+<p>The video game industry did not create that drive. It inherited it. And then it built a machine on top of it.</p>
+<p>That machine is the parasite.</p>
+<p>The parasite survives by hijacking your natural hunger for play, exploration, competition, and mastery, and twisting it into a counterfeit. It takes your genuine need for achievement and offers you a ranked ladder. It takes your genuine need for connection and offers you transactional guild obligations. It takes your genuine need for rest and offers you a dopamine-saturated escape that leaves you more exhausted than before.</p>
+<p>The parasite does not satisfy your real hunger. It merely dulls your awareness of it.</p>
+<p>And here is the most insidious part: the parasite survives by manufacturing the fear of absence. It convinces you that without its artificial rewards, life will be empty and gray. It tells you that the ranks, the loot, the gear scores, and the daily rewards are the only source of color and excitement in your world.</p>
+<p>But that is a lie. The color and excitement are coming from you—from your own healthy human drive to play, explore, and grow. The parasite is just siphoning that energy and selling it back to you as a counterfeit.</p>
+<p>You are not starving for the game. You are starving for real play. Real connection. Real mastery. Real rest. And the game has been feeding you the digital equivalent of vending-machine food while convincing you it is a nourishing meal.</p>
+<h3 id="why-intelligent-people-fall-harder"><a class="header" href="#why-intelligent-people-fall-harder">Why Intelligent People Fall Harder</a></h3>
+<p>Now, let me address something that might be lurking in the back of your mind.</p>
+<p><em>I'm smart. I understand game design. I know about Skinner boxes and dopamine and variable reward schedules. I've even joked about being "addicted to the grind." So how could I be trapped? If I know how the trick works, shouldn't I be immune to it?</em></p>
+<p>This is one of the most dangerous beliefs a person can hold. Not because it is offensive, but because it is precisely the belief that makes intelligent people fall harder.</p>
+<p>Here is the truth: <strong>knowing how a trap works does not make you immune to it.</strong></p>
+<p>Have you ever watched a horror movie and still jumped at the jumpscare? You knew it was coming. You saw the setup. You could predict the exact moment. And yet your body still flinched, your heart still raced, your adrenaline still spiked.</p>
+<p>Why? Because the jumpscare is not targeting your intellect. It is targeting your nervous system. Knowing it is coming does not stop your body from reacting.</p>
+<p>The same is true of video game mechanics. Daily login bonuses, battle passes, ranked ladders, gacha pulls—these systems are not designed to convince you logically. They are designed to trigger your nervous system directly. They target the ancient reward pathways in your brain that evolved millions of years before you ever learned to think critically.</p>
+<p>You can know all about variable-ratio reward schedules and still feel the pull of a loot box. You can know about loss aversion and still rage-queue after a bad loss. You can know about the sunk-cost fallacy and still feel reluctant to walk away from an account you have invested thousands of hours into.</p>
+<p>Intelligence does not grant immunity. In fact, intelligence often makes the trap worse.</p>
+<p>Why? Because intelligent people assume that understanding a problem is the same as solving it. They assume that because they can see the mechanics, the mechanics cannot control them. So they stay longer, reassuring themselves that they are too smart to be manipulated, while the trap tightens around them.</p>
+<p>You are not trapped because you are stupid. You are trapped because the trap was designed to work on people exactly like you—smart, curious, and confident in their own autonomy.</p>
+<h3 id="the-little-monster-demystified"><a class="header" href="#the-little-monster-demystified">The Little Monster Demystified</a></h3>
+<p>Let's take a moment to demystify the physical sensations you feel when you try to stop playing.</p>
+<p>You know the ones I mean. The fidgety legs. The idle urge to open the launcher. The phantom pull toward Discord or Twitch. The feeling of restlessness when you sit in a quiet room with nothing to do.</p>
+<p>When you feel those sensations, your mind immediately interprets them as evidence of addiction. <em>See? I can't even sit still without thinking about the game. I'm hooked. My brain is broken.</em></p>
+<p>But let me offer you a different interpretation.</p>
+<p>Have you ever had a song stuck in your head? It loops and loops, playing over and over, even when you don't want it to. But it doesn't hurt. It's not painful. It's just an echo—a faint neural pattern that repeats until it fades.</p>
+<p>The Little Monster is like that song.</p>
+<p>It is not pain. It is not withdrawal. It is not a monster. It is just a faint neurological echo of previous overstimulation—a tiny ripple in your nervous system that will fade on its own as soon as the overstimulation stops.</p>
+<p>The problem is that you have been taught to fear that echo. You have been told that it is a sign of deep addiction, that it will grow stronger and more painful the longer you resist, that you are powerless against it.</p>
+<p>But that is not true.</p>
+<p>The Little Monster is not growing, fighting you, or trying to drag you back to the screen. It is just humming quietly in the background, like a fridge after the door has been opened too long.</p>
+<p>And here is the beautiful thing: <strong>the Little Monster only has power when the Big Monster is feeding it.</strong></p>
+<p>When you believe that gaming is precious and necessary, the physical echo feels like deprivation. When you see that gaming is an empty treadmill, the physical echo feels like what it is: a minor, harmless nuisance that fades in a matter of days.</p>
+<p>You do not need to fight the Little Monster. You do not need to starve it with willpower. You simply need to dismantle the Big Monster, and the Little Monster will dissolve on its own.</p>
+<h3 id="the-trap-was-set-before-you-noticed"><a class="header" href="#the-trap-was-set-before-you-noticed">The Trap Was Set Before You Noticed</a></h3>
+<p>There is one more belief we need to address before we move on.</p>
+<p><em>I could have stopped at any time. I just didn't want to. That means I chose this.</em></p>
+<p>This is the belief that keeps so many people trapped in shame. The idea that their current situation is the result of their own free choices, and therefore their own fault.</p>
+<p>But let me tell you a story.</p>
+<p>If you place a frog in a pot of boiling water, it will immediately jump out. The danger is obvious, and the frog's survival instincts kick in instantly.</p>
+<p>But if you place a frog in a pot of cool water and slowly raise the temperature, one degree at a time, the frog will stay in the pot. The change is so gradual, so imperceptible, that the frog never notices the danger until it is too late.</p>
+<p>Now, you are not a frog. But the principle is the same.</p>
+<p>The trap did not announce itself. It did not arrive with a warning label. It did not suddenly reveal that the fun had stopped being the point.</p>
+<p>Instead, the temperature rose slowly. One degree at a time. The daily login bonus became a daily obligation. The battle pass became a chore. The ranked ladder became an ego trap. The social circle became a set of transactional obligations.</p>
+<p>You did not choose the boiling water. You chose the cool water. And the heat rose so gradually that you never felt the moment it became dangerous.</p>
+<p>That is not a moral failure. That is a design success.</p>
+<p>The game industry did not set out to create a trap that would feel like a trap. They set out to create a trap that would feel like freedom. And they succeeded.</p>
+<p>You are not weak. You are not stupid. You are not broken. You are simply a person who was never shown the walls of the pitcher plant until you were already inside.</p>
+<h3 id="seeing-the-walls"><a class="header" href="#seeing-the-walls">Seeing the Walls</a></h3>
+<p>But here is the good news. The moment you see the walls, the trap begins to lose its power.</p>
+<p>You do not need to climb out of the pitcher plant. You do not need to fight your way up the slippery sides. You simply need to see the trap for what it is, and the desire to keep sliding will vanish on its own.</p>
+<p>That is what the rest of this book is going to do. It will show you the walls. It will dismantle the Big Monster, piece by piece, until every one of its illusions has been exposed. It will demystify the Little Monster, until the physical echo loses its power to frighten you. And it will reveal the parasite for what it is: a hollow, mechanical counterfeit of real play.</p>
+<p>You did not fall because you were weak. You fell because the trap was designed to be invisible. The nectar at the rim was real. The slide was imperceptible. And now that you can see the walls, you can stop sliding.</p>
+<p>Now that you can see the shape of the trap, it is time to examine the first lie it told you: that gaming relaxes you after a stressful day.</p>
+<p>Because the truth is far stranger than that. The game did not relieve your stress. It manufactured it.</p>
+<p>In the next chapter, we will look at The Magic Trick—and why that post-work gaming session is a lot like wearing shoes two sizes too small just to enjoy taking them off.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="01.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="01.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

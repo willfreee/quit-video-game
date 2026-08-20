@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Chapter 1: The Paradoxical Invitation (Keep Playing for Now) - The Easy Way to Stop Video Gaming</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Easy Way to Stop Video Gaming</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>1: The Paradoxical Invitation (Keep Playing for Now)</p>
+<p>You are not weak. You are not broken. And you are not being asked to give anything up.</p>
+<p>I know that sounds impossible. Every self-help book you have ever picked up, every well-meaning friend who has nudged you, every quiet 2 AM moment of self-recrimination has told you the opposite. They told you that you lack discipline. That you need to cut back, set limits, install blockers, and white-knuckle your way to freedom. That the game is a precious, addictive substance to be locked behind titanium walls of willpower.</p>
+<p>This book is going to ask you to forget all of that.</p>
+<p>In fact, this book is going to ask you to do something that will feel completely insane at first. It is the single most important instruction you will ever receive about your relationship with video games, and it is the exact opposite of what you expect.</p>
+<p><strong>Do not stop playing.</strong></p>
+<p>Do not delete your games. Do not uninstall your launchers. Do not set screen-time limits, download website blockers, or lock your console in a closet. Do not promise yourself that you will cut down to one hour a day or that you will only play on weekends. Do not attempt to moderate, restrict, or fight against your habit in any way while you are reading this book.</p>
+<p>Just keep playing exactly as you always have.</p>
+<p>If you are reading this at 2 AM with the glow of a monitor still on your face and the faint echo of a recent match still buzzing in your fingertips, that is fine. If you are reading this on your phone in bed while your mind is already calculating tomorrow's daily login rewards, that is fine too. You do not need to change anything about your behavior right now.</p>
+<p>I can hear the objection already forming in your mind. <em>But if I don't start cutting back, how will I ever quit? If I keep playing while reading, won't I just fall back into autopilot and forget everything this book says?</em></p>
+<p>That is exactly the point. You are going to keep playing while reading, and you are going to watch yourself do it.</p>
+<h3 id="the-exhausted-arrival"><a class="header" href="#the-exhausted-arrival">The Exhausted Arrival</a></h3>
+<p>Let's take a moment to be honest about where you are right now.</p>
+<p>You did not pick up this book on a whim. You did not stumble into it casually while browsing online with a light heart and a clear conscience. You are here because something has been gnawing at you. Something has been sitting in the back of your mind for weeks, months, or maybe even years, whispering that the hours you spend in front of the screen are not quite adding up to the life you actually want.</p>
+<p>Maybe you looked at your profile the other day and saw a number that made your stomach drop. <em>3,500 hours played.</em> Three thousand five hundred hours. That is roughly one hundred forty-five full days of your life—almost five months of continuous, non-stop play. And for what? A rank that will reset next season. Gear that will become obsolete in the next patch. Pixels that will not matter to anyone, including you, in five years.</p>
+<p>Or maybe you did not have a dramatic moment of reckoning at all. Maybe you just noticed the slow, quiet erosion. The way you rush through meals just to get back to the keyboard. The way you feel a flash of irritation when someone interrupts an unpausable match. The way you tell yourself <em>just one more match</em> at midnight, and then somehow it is 2:47 AM and you are staring at a glowing defeat screen with your heart pounding and your jaw clenched.</p>
+<p>You are exhausted. Not just physically tired from staying up too late, but existentially drained. Tired of the cycle. Tired of the promises to yourself that never stick. Tired of the strange, hollow feeling that comes after a long session—that sense of having done something for three hours and accomplished nothing at all.</p>
+<p>And now you are here, reading a book about stopping gaming, and you are bracing yourself.</p>
+<p>That is the key word: bracing. You are bracing for the lecture. Bracing for the guilt trip. Bracing for the long, painful, uphill battle of self-denial that you have already tried and failed at a dozen times before.</p>
+<p>What if the battle was never necessary? What if the problem was never that you lacked discipline, but that you were lied to about what the game was actually giving you? What would it feel like to walk out of a trap without having to fight your way out?</p>
+<p>That is what this book is about. And that is why I am not asking you to stop playing. Because before you can walk away from the screen, you need to see it clearly. And you cannot see it clearly if you are too busy fighting yourself to look.</p>
+<h3 id="the-paradoxical-instruction"><a class="header" href="#the-paradoxical-instruction">The Paradoxical Instruction</a></h3>
+<p>Here is the first and most important truth of this book: <strong>the struggle to stop gaming is almost entirely created by the belief that you are giving something up.</strong></p>
+<p>Think about every time you have tried to quit or cut back in the past. What was the first thing you did? You probably deleted the game. Or set a timer. Or made a solemn promise to play only on weekends, only after work, only for one hour before bed.</p>
+<p>And what happened next?</p>
+<p>The moment you imposed those restrictions, the game became more valuable in your mind. It became the forbidden fruit—the thing you wanted but could not have. Every minute away from the screen felt like deprivation. Every glance at the launcher icon felt like a tug of war. You were not free. You were just white-knuckling.</p>
+<p>That is not a failure of willpower. That is the predictable result of a flawed approach.</p>
+<p>Imagine trying to enjoy a movie while someone kept pausing it every ten minutes. You would not be able to relax into the story. You would spend the entire time waiting for the next interruption, the next pause, the next moment of forced withdrawal. The movie would become a source of tension rather than pleasure. And the moment the pauses stopped, you would binge it all at once just to feel whole again.</p>
+<p>That is what moderation does to a gamer's mind. It keeps the game perpetually lit in the background, making every minute of play feel precious and every minute away feel like deprivation.</p>
+<p>So I am not going to ask you to moderate. I am not going to ask you to restrict yourself. I am not going to ask you to fight.</p>
+<p>I am simply going to ask you to <strong>watch</strong>.</p>
+<p>Keep playing. Keep queueing. Keep logging in for your dailies. Keep staying up too late. But as you do, start paying attention. Start noticing what is actually happening in your body and your mind while you play. Start asking yourself one simple question: <em>What am I actually getting from this?</em></p>
+<p>You do not need to answer that question right away. You do not need to change anything about your behavior. Just hold the question in the back of your mind and let it sit there, quietly, while you play.</p>
+<p>Because here is the secret: you are not caught in a physical addiction that requires brute force to break. You are caught in a set of ideas. And ideas, once they are seen clearly, dissolve on their own.</p>
+<h3 id="the-difference-between-play-and-the-trap"><a class="header" href="#the-difference-between-play-and-the-trap">The Difference Between Play and the Trap</a></h3>
+<p>Now, before we go any further, let me make one thing very clear.</p>
+<p>This book is not against play.</p>
+<p>Play is one of the oldest and most beautiful impulses in the human animal. It is how children learn, how adults decompress, how friends bond. Play is voluntary, joyful, creative, and life-giving. When you finish a session of genuine play, you feel refreshed, connected, nourished on a deep level.</p>
+<p>This book has no quarrel with genuine play. This book has a quarrel with a very specific, very common, very poisonous form of engagement that has stolen the word "play" and twisted it into something else entirely.</p>
+<p>Let me give you a simple comparison.</p>
+<p>Imagine you eat a nourishing meal with friends. The food is good, the conversation is warm, and you leave the table feeling satisfied and energized. That is genuine play.</p>
+<p>Now imagine you eat stale vending-machine food alone at midnight, staring at a screen. The food is heavy, the taste is artificial, and you feel slightly queasy afterward. But you keep eating anyway, not because you are hungry, but because you are bored, or restless, or trying to fill some nameless void. That is the compulsive loop.</p>
+<p>Both are technically "eating." But only one is actually feeding you.</p>
+<p>The same is true of video games. There is a world of difference between a short, intentional session with friends that leaves you laughing and refreshed, and the hollow, repetitive grind that leaves you drained and empty. There is a world of difference between playing a beautiful story-driven game because you genuinely want to experience it, and logging in every day because you are afraid of missing a daily reward.</p>
+<p>The first is play. The second is something else entirely.</p>
+<p>The second is a trap.</p>
+<p>And the most insidious thing about this trap is that it does not feel like a trap while you are inside it. It feels like a choice. Like a hobby. Like the only thing that keeps you sane in a stressful world. But every hour you spend inside it, the walls get a little higher, and the exit gets a little harder to find.</p>
+<p>That is what we are going to dismantle in this book. Not the joy of play, but the illusion that keeps you trapped in the grind.</p>
+<h3 id="a-preview-of-the-two-monsters"><a class="header" href="#a-preview-of-the-two-monsters">A Preview of the Two Monsters</a></h3>
+<p>Now, I know what you might be thinking. <em>But I don't just believe gaming is relaxing or social or fulfilling. I feel something physical when I try to stop. Restless. Twitchy. An urge to open the launcher even when I don't want to play. That must mean I'm chemically addicted, right? My brain is broken.</em></p>
+<p>That is the fear that keeps most people trapped. They believe they are facing a massive biological monster—a chemical dependency that requires medical intervention or superhuman willpower to overcome.</p>
+<p>But that belief is almost entirely false.</p>
+<p>In reality, the struggle to stop gaming is driven by two very different forces. Let me introduce you to them, because they will be the central characters of this book.</p>
+<p>The first is <strong>the Big Monster</strong>. This monster is responsible for 99% of the struggle. But despite its size, it is not a chemical dependency. It is not a brain disease. It is not a physical addiction. The Big Monster is made entirely of ideas.</p>
+<p><em>It relaxes me.</em>
+<em>It's my social life.</em>
+<em>I've invested too much to walk away.</em>
+<em>It's where I find achievement and mastery.</em>
+<em>It's cheaper than going out.</em>
+<em>It keeps me sharp.</em></p>
+<p>These are the thoughts that keep you logging in. They are not truths. They are beliefs—beliefs that have been carefully planted in your mind by years of cultural messaging, marketing, and personal rationalization. The Big Monster is a parasite of thought. It survives by convincing you that the game is precious, necessary, and irreplaceable.</p>
+<p>And here is the most important thing: the Big Monster is wrong. About everything. Every single one of those beliefs is an illusion, and we are going to dismantle each one, piece by piece, over the course of this book.</p>
+<p>The second is <strong>the Little Monster</strong>. This monster is responsible for only 1% of the struggle. It is the tiny physical echo that remains after years of overstimulation—a slight restlessness in your fingers, an idle urge to click the launcher icon, a phantom itch that says <em>you should be doing something right now</em>.</p>
+<p>The Little Monster is not your enemy. It is not an evil demon possessing your brain. It is simply your nervous system responding predictably to a highly concentrated stimulus. It is like a fridge humming after the door has been opened too long. It is not dangerous. It is not painful. It is just a faint background noise.</p>
+<p>And here is the critical truth: <strong>the Little Monster only has power when the Big Monster is feeding it.</strong></p>
+<p>The physical restlessness you feel when you try to stop gaming is real, but it is tiny. It is not enough to keep you trapped on its own. It only feels overwhelming because the Big Monster is screaming in your ear at the same time, telling you that you are missing out, that you are losing something precious, that you will never feel relaxed or social or fulfilled again without the game.</p>
+<p>When the Big Monster is dismantled—when you see clearly that you are not giving anything up—the Little Monster dissolves on its own. It does not need to be fought. It does not need to be starved with willpower. It just quietly fades away.</p>
+<p>That is why this book does not ask you to stop playing. Because stopping is not the first step. Seeing is the first step. And once you see, the stopping becomes effortless.</p>
+<h3 id="the-fear-of-watching-yourself-play"><a class="header" href="#the-fear-of-watching-yourself-play">The Fear of Watching Yourself Play</a></h3>
+<p>You might still be skeptical. <em>If I keep playing while reading, I'll just fall back into autopilot and this book won't work. I need to stop first, or at least cut back, or I'll never change.</em></p>
+<p>But that is the exact opposite of the truth.</p>
+<p>Think about what happens when you try to stop before understanding why you play. You are fighting a battle against an enemy you cannot see. You are trying to resist something that still feels valuable, and resistance only makes it feel more precious. That is why every attempt at moderation or cold-turkey willpower eventually collapses.</p>
+<p>The answer is not to fight harder. The answer is to look closer.</p>
+<p>Have you ever walked into a room and forgotten why you went there? The moment you stop and ask <em>Why am I here?</em> the autopilot breaks. The fog lifts. You suddenly remember that you came in for a glass of water, not to stand in the doorway staring blankly.</p>
+<p>That is what this book is going to do for your gaming. Every time you sit down to play, you are going to ask yourself a quiet question: <em>Why am I here? What am I actually getting from this?</em></p>
+<p>You do not need to answer the question. You do not need to change your behavior. You just need to ask it.</p>
+<p>And here is what will happen. The next time you log in, you will notice things you never noticed before. The flash of the login reward screen. The urgency of the daily quest timer. The bright, pulsing button that says <em>PLAY AGAIN</em>. The subtle pressure to claim your battle pass rewards before the season ends.</p>
+<p>You will notice the physical sensations too. The tension in your shoulders. The shallow breathing during a ranked match. The spike of adrenaline when a loss screen appears. The faint emptiness when the session ends.</p>
+<p>None of this requires effort. You do not have to stop anything. You just have to notice.</p>
+<p>And once you start noticing, the spell begins to weaken.</p>
+<h3 id="the-empty-chair-at-2-am"><a class="header" href="#the-empty-chair-at-2-am">The Empty Chair at 2 AM</a></h3>
+<p>Let me speak directly to the version of you who is reading this right now at the end of a long session.</p>
+<p>The screen is glowing. The room is silent. You feel tired but wired—your body exhausted, but your mind still buzzing with the residue of digital stimulation. You cannot quite remember what you gained in the last three hours. A few ranks? A piece of gear? A daily reward?</p>
+<p>And yet here you are, still scrolling, still queuing, still telling yourself that you will log off after one more.</p>
+<p>Let me ask you a question.</p>
+<p>If this truly relaxed you, why do you feel more exhausted than when you sat down? If this truly fulfilled you, why do you feel emptier than before? If this truly brought you joy, why does the thought of quitting make you feel panic instead of peace?</p>
+<p>The answer is uncomfortable, but it is the key that will unlock everything else in this book:</p>
+<p><strong>The relief you feel from gaming is not real rest. It is the temporary removal of a tension the game itself created.</strong></p>
+<p>That is a big idea, and we will spend many chapters unpacking it. But for now, just hold it in your mind. Turn it over. Let it sit.</p>
+<p>Because if that sentence is true—if the game is manufacturing the very stress it claims to relieve—then everything you believe about gaming is about to change.</p>
+<p>And that is not something to fear. That is something to celebrate.</p>
+<h3 id="the-non-threat-of-this-book"><a class="header" href="#the-non-threat-of-this-book">The Non-Threat of This Book</a></h3>
+<p>You have tried to quit before. I know that. You have tried app blockers, screen-time limits, deleting your games, promising yourself that this time will be different. You have tried moderation, cold turkey, every productivity hack in between.</p>
+<p>And every time, you ended up back in front of the screen, feeling worse about yourself than before.</p>
+<p>What if I told you that those methods failed not because you were weak, but because they were based on a false premise?</p>
+<p>Every willpower-based approach rests on the same assumption: that the game is a precious thing you must be deprived of. That you are making a sacrifice. That you are giving up something valuable and must endure the pain of that loss.</p>
+<p>But what if you were never giving anything up?</p>
+<p>What if the game was never precious, never necessary, never valuable at all?</p>
+<p>Then there would be nothing to sacrifice. Nothing to mourn. Nothing to fight.</p>
+<p>You would not need willpower. You would not need blockers or timers or accountability partners. You would simply see the game for what it is—a gilded treadmill, a digital chore loop, a counterfeit of real play—and the desire to keep playing would vanish on its own.</p>
+<p>That is not a fantasy. That is the exact mechanism by which millions of people have escaped traps far more daunting than video games. They did not fight their way out. They saw their way out.</p>
+<p>And that is what this book is going to do for you.</p>
+<h3 id="the-observer-not-the-addict"><a class="header" href="#the-observer-not-the-addict">The Observer, Not the Addict</a></h3>
+<p>Before we move on, I want you to notice something about the language you use to describe yourself.</p>
+<p><em>I'm addicted.</em>
+<em>I have a gaming problem.</em>
+<em>I'm a gaming addict.</em></p>
+<p>These labels feel heavy, don't they? They feel like a diagnosis. Like a permanent stain on your character. Like proof that something is fundamentally wrong with you.</p>
+<p>But what if you are not broken? What if you are a healthy, intelligent, capable person who fell into a carefully engineered trap? What if the problem was never your brain chemistry, your discipline, or your moral character, but simply that you believed a set of lies?</p>
+<p>You are not an addict. You are a person who was lied to.</p>
+<p>And the moment you see through those lies, the label will fall away on its own.</p>
+<p>This book is not going to treat you like a patient. It is not going to lecture you, shame you, or demand that you prove your seriousness by suffering. It is going to treat you like what you are: an observer who is about to see through a trick.</p>
+<p>You are not being asked to give anything up. You are being invited to see clearly.</p>
+<p>Once you see the gears behind the screen, the desire to keep turning the crank will simply fall away.</p>
+<hr />
+<p>But before we can see through the trick, we need to understand how you were pulled into it in the first place.</p>
+<p>You did not jump into the pitcher plant on purpose. You slid in one small step at a time. The nectar at the rim tasted sweet, and the walls were slippery, and by the time you looked up, the light at the top seemed very far away.</p>
+<p>In the next chapter, we will look at the slippery walls of that plant. We will examine how the trap was set before you ever realized you were inside, and how the most intelligent people are often the easiest to catch.</p>
+<p>Because here is the first and most comforting truth of this entire book: <strong>you were never stupid for falling into the trap. You were just never told it was a trap at all.</strong></p>
+<p>Keep playing. Keep watching. And let's find out what you have actually been giving your life to.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next prefetch" href="02.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next prefetch" href="02.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
